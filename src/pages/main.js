@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import firestore from '../config.js';
+import React, {useState} from 'react';
+import firestore from '../components/utils/config.js';
 import Button from '../components/button/index.js'
 import Input from '../components/input/index.js';
 import '../components/button/style.css';
+import Menu from '../pages/menu.js'
 
 
     // const Main = () => (
@@ -13,6 +14,7 @@ import '../components/button/style.css';
     //     </div>
     // )
     
+
     const AddClientInfo = () => {
         const [client, setClient] = useState('');
         const [table, setTable] = useState('');
@@ -38,7 +40,21 @@ import '../components/button/style.css';
                     
                 }) 
         }
-      
+
+    
+        
+        
+        // useEffect(() => {
+        //     firestore.collection("menu").get()
+        //         .then((docs) => {
+        //             const dados = docs.forEach((doc)=> {
+        //                 doc.data()
+        //                 return lalala
+                        
+        //             })
+        //         })
+        // }, [])
+        
       return (
         <div>
             <label>
@@ -50,14 +66,14 @@ import '../components/button/style.css';
             </label>
             <Input id='input-number' type="number" state={table} handleChange={e => setTable(e.currentTarget.value)}/>
             <Button id='btn-food' handleClick={onSubmit} text={'Enviar'}/>
+            <Menu/>
         </div>
        
        
       );
     };
     
-    
-    
+     
 
     
 export default AddClientInfo;
