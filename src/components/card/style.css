@@ -1,0 +1,17 @@
+.card {
+    
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: orange;
+    color:#fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}

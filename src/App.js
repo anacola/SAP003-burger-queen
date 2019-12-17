@@ -1,7 +1,7 @@
 import React from 'react';
 // import firebase from './config';
 import './App.css';
-import AddClientInfo from './pages/main'
+import AddClientInfo from './pages/waiter.js';
 
 
 function App() {
