@@ -1,10 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-const Order = (props) =>{
+const Order = (props) => {
     return (
-        <ol placeholder={props.placeholder} value={props.state} id={props.id} onChange={props.handleChange} className="list" />
-    );
-} 
+        <ol>
+            {props.menuItens.map((menu) =>
+            <button key={menu.id} onClick={() => props.handleClick(menu)}>
+                <div className="burger">
+                    {menu.name}
+                <h4 className="price">R$ {menu.price},00</h4>
+                </div>
+            </button>  
+            )}
+        </ol>
+    )
+}
 
-
-export default Order;
+export default Order
