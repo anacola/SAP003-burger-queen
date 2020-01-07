@@ -17,6 +17,8 @@ const AddClientInfo = () => {
     const [itens1, setItens1] = useState([]);
     const [itens2, setItens2] = useState([]);
     const [menu, setMenu] = useState('breakfast');
+    const [options, setOptions] = useState([]);
+    // const [meet, setMeet] = useState("");
     
     useEffect(() => {
         firestore.collection('menu')
@@ -45,7 +47,7 @@ const AddClientInfo = () => {
                 client,
                 table: parseInt(table),
                 productSelect,
-                total: valorPedido,
+                total: totalOrder,
             })
             .then(()=>{
                setTable('')
@@ -56,7 +58,8 @@ const AddClientInfo = () => {
     }
     
     const increaseUnit = (product) =>{
-        if(!productSelect.includes(product)) {
+        const productIndex = productSelect.findIndex(e => e.name === product.name)
+        if(productIndex === -1) {
             product.contador = 1;
             setProductSelect([...productSelect, product])
         } else {
@@ -65,10 +68,18 @@ const AddClientInfo = () => {
            }   
     }
 
-    const valorPedido = productSelect.reduce((acc,item) => acc + (item.contador * item.price), 0);
+    const openOptions = (elem) => { 
+        if(elem.options.length !== 0){
+            setOptions(elem) 
+        } else {
+            increaseUnit(elem);
+        }
 
+    }
 
-    function decreaseUnit(product) {
+    const totalOrder = productSelect.reduce((acc,item) => acc + (item.contador * item.price), 0);
+
+    const decreaseUnit = (product) =>{
         if(product.contador === 1){
             const removeProductFromScreen = productSelect.filter((erase) => { 
                 return erase !== product;
@@ -79,17 +90,16 @@ const AddClientInfo = () => {
         setProductSelect([...productSelect])             
         }
     }
-   
+
     const deletar = (item) =>{
         const index = (productSelect.indexOf(item));
         productSelect.splice(index, 1);
         setProductSelect([...productSelect]);
-
     }
 
-    return (
+      return (
         <>
-            <section className='App'>
+            <section className='header'>
                 <Header text={"Burger Queen"}/>
                 <div>
                     <Button text={'Breakfast'} handleClick={() => setMenu('breakfast') } />
@@ -99,13 +109,30 @@ const AddClientInfo = () => {
                 <div className={'menu'}>
                     <Order 
                     menuItens={menu === "breakfast" ? itens1 : itens2} 
-                    handleClick={increaseUnit} 
+                    handleClick={openOptions} 
                     name={productSelect.name}
                     price={productSelect.price} key={productSelect.id}/>
                 </div>
             </section>
+            <section>
+                { options.length !== 0 ? 
+                    options.options.map((elem, index) => (
+                        <div key={index}>
+                            <input 
+                                type="button"
+                                name="types" 
+                                value={elem} 
+                                onClick={()=> {
+                                     const teste= {...options, name: `${options.name} ${elem}`}; 
+                                     increaseUnit(teste)
+                                     setOptions([]);
+                                }}
+                            /> 
+                        </div>)) : false}
+               
+            </section>
             
-            <section className={'menu'}>
+            <section className={'order'}>
                 <div>
                     <label>
                         <strong>cliente</strong>
@@ -130,7 +157,7 @@ const AddClientInfo = () => {
                     </div>
                 ))}
                     
-                <p>Total:{valorPedido.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
+                <p>Total:{totalOrder.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
                 <Button id='button' handleClick={onSubmit} text={'Enviar'}/>
             </section>        
         </>    
