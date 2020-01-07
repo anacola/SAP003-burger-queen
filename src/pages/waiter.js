@@ -12,7 +12,7 @@ import '../components/card/style.css';
 const AddClientInfo = () => {
     const [client, setClient] = useState('');
     const [table, setTable] = useState('');
-    const [productSelect, setproductSelect] = useState([]);
+    const [productSelect, setProductSelect] = useState([]);
     const [total, setTotal] = useState(''); 
     const [itens1, setItens1] = useState([]);
     const [itens2, setItens2] = useState([]);
@@ -35,7 +35,6 @@ const AddClientInfo = () => {
                 })
 
         },[])
-
      
     function onSubmit(e) {
         e.preventDefault()
@@ -46,27 +45,45 @@ const AddClientInfo = () => {
                 client,
                 table: parseInt(table),
                 productSelect,
-                total,
+                total: valorPedido,
             })
             .then(()=>{
                setTable('')
                setClient('')
-               setproductSelect([])
+               setProductSelect([])
                setTotal('')
-                
             }) 
     }
     
-    const resumo = (item) =>{
-        setproductSelect([...productSelect, item])              
+    const increaseUnit = (product) =>{
+        if(!productSelect.includes(product)) {
+            product.contador = 1;
+            setProductSelect([...productSelect, product])
+        } else {
+            product.contador += 1;
+            setProductSelect([...productSelect])             
+           }   
     }
 
-    const valorPedido = productSelect.reduce((acc,item) => acc + item.price, 0);
+    const valorPedido = productSelect.reduce((acc,item) => acc + (item.contador * item.price), 0);
 
-    const remove = (item) =>{
+
+    function decreaseUnit(product) {
+        if(product.contador === 1){
+            const removeProductFromScreen = productSelect.filter((erase) => { 
+                return erase !== product;
+            })
+            setProductSelect([...removeProductFromScreen])             
+        } else{
+        product.contador --
+        setProductSelect([...productSelect])             
+        }
+    }
+   
+    const deletar = (item) =>{
         const index = (productSelect.indexOf(item));
         productSelect.splice(index, 1);
-        setproductSelect([...productSelect]);
+        setProductSelect([...productSelect]);
 
     }
 
@@ -82,8 +99,8 @@ const AddClientInfo = () => {
                 <div className={'menu'}>
                     <Order 
                     menuItens={menu === "breakfast" ? itens1 : itens2} 
-                    handleClick={resumo} 
-                    name={productSelect.name} 
+                    handleClick={increaseUnit} 
+                    name={productSelect.name}
                     price={productSelect.price} key={productSelect.id}/>
                 </div>
             </section>
@@ -100,26 +117,24 @@ const AddClientInfo = () => {
                     <Input id='input-number' type="number" state={table} handleChange={e => setTable(e.currentTarget.value)}/>
                 </div>
                 {productSelect.map((product, index) => (
-                    <div key={index}> 
-                        {product.name} R$ {product.price},00 
+                    <div key={index}>
+                        <Button text={'+'} handleClick={()=> increaseUnit(product)} />
+                        {product.contador}
+                        <Button text={'-'} handleClick={() => decreaseUnit(product)}/>
+                        {product.name} {product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
                         <Button text={'Del'} handleClick={(e) => {
                         e.preventDefault(); 
-                        remove(product);
+                        deletar(product);
+                        
                         }}/>
                     </div>
                 ))}
                     
-                <p>Total:{valorPedido}</p>
+                <p>Total:{valorPedido.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
                 <Button id='button' handleClick={onSubmit} text={'Enviar'}/>
             </section>        
         </>    
     );
 };
-
-// function printMenu(props) {
-//   console.log('tá indooooooo')  
-// }
- 
-
 
 export default AddClientInfo;
