@@ -18,7 +18,7 @@ const AddClientInfo = () => {
     const [itens2, setItens2] = useState([]);
     const [menu, setMenu] = useState('breakfast');
     const [options, setOptions] = useState([]);
-    // const [meet, setMeet] = useState("");
+    const [extra, setExtra] = useState([]);
     
     useEffect(() => {
         firestore.collection('menu')
@@ -77,7 +77,15 @@ const AddClientInfo = () => {
 
     }
 
-    const totalOrder = productSelect.reduce((acc,item) => acc + (item.contador * item.price), 0);
+    const openExtra =(elem)=>{
+        if(elem.extra.lenght !==0){
+            setExtra(elem)
+        }else{
+            increaseUnit(elem)
+        }
+    }
+
+const totalOrder = productSelect.reduce((acc,item) => acc + (item.contador * item.price), 0);
 
     const decreaseUnit = (product) =>{
         if(product.contador === 1){
@@ -97,19 +105,30 @@ const AddClientInfo = () => {
         setProductSelect([...productSelect]);
     }
 
+
+        
       return (
         <>
             <section className='header'>
-                <Header text={"Burger Queen"}/>
+                <Header 
+                    text={"Burger Queen"}
+                />
                 <div>
-                    <Button text={'Breakfast'} handleClick={() => setMenu('breakfast') } />
-                    <Button text={'All Day'} handleClick={() => setMenu('lunch') } />
+                    <Button 
+                        text={'Breakfast'}
+                        handleClick={() => setMenu('breakfast') }
+                    />
+                    <Button
+                        text={'All Day'}
+                        handleClick={() => setMenu('lunch') }
+                    />
                 </div>
-                
+                  
                 <div className={'menu'}>
                     <Order 
                     menuItens={menu === "breakfast" ? itens1 : itens2} 
-                    handleClick={openOptions} 
+                    extras={openExtra}
+                    options={openOptions}
                     name={productSelect.name}
                     price={productSelect.price} key={productSelect.id}/>
                 </div>
@@ -119,16 +138,34 @@ const AddClientInfo = () => {
                     options.options.map((elem, index) => (
                         <div key={index}>
                             <input 
-                                type="button"
+                                type="radio"
                                 name="types" 
-                                value={elem} 
+                                value={options.name}
                                 onClick={()=> {
                                      const teste= {...options, name: `${options.name} ${elem}`}; 
                                      increaseUnit(teste)
                                      setOptions([]);
                                 }}
-                            /> 
-                        </div>)) : false}
+                            />{elem}       
+                        </div>)) 
+                
+                : false}
+                {extra.length !== 0 ?
+                    extra.extra.map((elem, index)=>(
+                        <div key={index}>
+                            <input
+                                type="radio"
+                                name="extra"
+                                value={extra.name}
+                                onClick={()=> {
+                                    const teste2={...extra, name: `${extra.name} ${elem}`}
+                                    increaseUnit(teste2)
+
+                                }}
+                            />{elem}
+                        </div>
+                    ))
+                :false}
                
             </section>
             
@@ -165,3 +202,71 @@ const AddClientInfo = () => {
 };
 
 export default AddClientInfo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
