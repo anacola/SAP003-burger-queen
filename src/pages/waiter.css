@@ -1,0 +1,94 @@
+.waiter{
+    display:flex;
+    flex-direction: column;
+    background-color: #371124;
+}
+
+.App {
+    background-color: #491730;
+    padding:2%;
+    display:flex;
+    flex-direction: row;
+    text-align: center;
+    height: 84vh;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    text-align: center;
+    justify-content: flex-start;
+}
+.categoria{
+    flex-direction: column;
+}
+
+.section{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    justify-items: center;
+    width: 40%;
+    text-align: center;
+    border-style: solid;
+    border-radius: 1%;
+    border-color:#eab46c;
+    
+}
+.pedidos{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: left;
+    margin-left: 5%;
+    
+}
+
+.send{
+    flex-direction: column;
+}
+
+button{
+    height: 30%;
+    width: 20%;
+    margin:1%;
+    font-size: 100%;
+    border-radius: 5%;
+    background: #eab46c;
+    color:#f14110;
+    cursor: pointer;
+    border: none;
+    vertical-align: top;
+}
+
+button:hover{
+    background: #fa3659;
+    color: #eab46c;
+
+}
+
+/* .options{
+    display: flex;
+    flex-direction: column;
+}
+.content-text{
+    display: flex;
+    justify-content: flex-start;
+} */
+
+.radio{
+    color: #eab46c;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+    margin-left:5%;
+    size:large;
+
+}
+
+.radio-options{
+    margin: 0.5%;
+    font-size: x-large;
+}

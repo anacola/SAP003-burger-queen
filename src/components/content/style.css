@@ -1,0 +1,27 @@
+.content{
+    font-size: 100%;
+    color: #eab46c;
+    display:inline-block;
+    margin: 1%;
+}
+
+.content-total{
+    font-size:150%;
+    font-weight: bold;
+    color: #eab46c;
+}
+.title{
+    margin: 5%;
+    font-size: xx-large;
+    font-weight: bold;
+    color:#fa3659;
+}
+
+.content-text{
+    font-size: 100%;
+    color: #eab46c;
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+
+}

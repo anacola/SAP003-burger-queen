@@ -1,0 +1,14 @@
+.input{
+    margin: 3%;
+    padding: 5%;
+    height: 40%;
+    width:90%;
+    background-color: #eab46c;
+    border-style: groove;
+    border:none;
+    border-radius: 0.5em;
+    color:#f14110;
+}
+::placeholder{
+    font-size: medium;
+}

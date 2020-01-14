@@ -1,12 +1,77 @@
-.button {
-    height: 30px;
-    width: 100px;
+.btn-options {
+    height: 3em;
+    width: 7em;
     padding: 10px;
-    border-radius: 5px;
-    border: 0;
-    background: orange;
-    color:#fff;
-    font-size: 16px;
+    margin:1%;
+    border-radius: 0.5em;
+    background: #f14110;
+    color:#eab46c;
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    border: none;
+
+}
+
+.btn-options:hover {
+    background: #fa3659;
+    color: #eab46c;
+}
+
+.btn-small{
+    height: 1.5em;
+    width: 1.5em;
+    align-content:flex;
+    margin:1%;
+    border-radius: 0.5em;
+    background: #f14110;
+    color:#eab46c;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+
+}
+.btn-small:hover {
+    background: #fa3659;
+    color: #eab46c;
+}
+
+
+.btn-small-del{
+    height: 1.5em;
+    width: 3em;
+    margin:1%;
+    border-radius: 0.5em;
+    background: #f14110;
+    color:#eab46c;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+
+}
+.btn-small-del:hover {
+    background: #fa3659;
+    color: #eab46c;
+}
+
+.btn-send {
+    height: 2.5em;
+    width: 6em;
+    padding: 10px;
+    margin:1%;
+    border-radius: 0.5em;
+    background: #f14110;
+    color:#eab46c;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-send:hover {
+    background: #fa3659;
+    color: #eab46c;
 }

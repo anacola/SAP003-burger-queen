@@ -1,16 +1,14 @@
-import React from 'react'
+import React from 'react';
+import './style.css';
 
 const Order = (props) => {
     return (
-        <ol>
+        <ol className={'order'}>
             {props.menuItens.map((menu) =>
-            <button key={menu.id} onClick={() =>{
-                props.extras(menu)
-                props.options(menu)
-            } }>
-                <div className="burger">
-                    {menu.name}
-                <h4 className="price">R$ {menu.price},00</h4>
+            <button key={menu.id} onClick={() => props.handleClick(menu)}>
+                <div>
+                    <p>{menu.name} </p>
+                    <h4>R$ {menu.price},00</h4>
                 </div>
             </button>  
             )}
