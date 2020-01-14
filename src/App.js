@@ -2,8 +2,9 @@ import React from 'react';
 // import firebase from './config';
 import './App.css';
 import AddClientInfo from './pages/waiter.js';
-import Kitchen from './pages/kitchen.js'
-import Header from './components/Header/index.js'
+import Kitchen from './pages/kitchen.js';
+import Delivery from './pages/delivery.js';
+import Main from './pages/main.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,18 +14,12 @@ import {
 function App() {
   return (
     <Router>
-      <div>
-        <Header
-          alt={'Burger Queen'}
-        />
-      </div>
-      <div>
         <Switch>
           <Route exact path="/service" component={AddClientInfo} />
           <Route exact path="/kitchen" component={Kitchen} />
+          <Route exact path="/delivery" component={Delivery} />
+          <Route exact path="/" component={Main}/>
         </Switch>
-      </div>
-
     </Router>
   );
 }

@@ -1,0 +1,34 @@
+.main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #371124;
+    height: 100%;
+
+}
+
+.img-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:30em;
+    width: 30em;
+    margin: 1%;
+}
+
+.main-navegation{
+    margin:5%
+}
+.main-link{
+    margin: 15px;
+    width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f14110;
+    color: #eab46c;
+    font-size: 40px;
+    display: block;
+    text-align: center;
+    text-decoration-line:none;
+
+}

@@ -3,10 +3,10 @@ import React, {useState, useEffect} from 'react';
 import Button from '../components/button/index.js';
 import OrderCozinha from '../components/orderCozinha/index.js';
 import Header from '../components/Header/index.js'
-;import './kitchen.css';
+import './delivery.css';
 
 
-const Kitchen = () => {
+const Delivery = () => {
 
     const [client, setClient] = useState([])
 
@@ -28,7 +28,7 @@ const Kitchen = () => {
 const updateStatus = (doc) =>{
 
     firestore.collection('client').doc(doc.id).update({
-        status:'Pronto',
+        status:'Entregue',
     })
 }   
     return (
@@ -37,17 +37,18 @@ const updateStatus = (doc) =>{
             <Header
                 alt={'Burger Queen'}
             />
-            <div className={'cozinha-tudo'}>
+            <div className={'all'}>
                 {client.map((doc, index) =>
-                    doc.status === 'Em Andamento' ?
-                        <div key={index} className={'cozinha'}>
+                    doc.status === 'Pronto' ?
+                        <div key={index} className={'delivery'}>
                             <OrderCozinha
                                 name={doc.client}
                                 mesa={doc.table}
                                 total={doc.total}
                                 productSelect={doc.productSelect}
+
                             />
-                            <Button className={'btn-cozinha'} text={'Pedido Pronto'} handleClick={() => updateStatus(doc)} />
+                            <Button className={'btn-cozinha'} text={'Pedido Entregue'} handleClick={() => updateStatus(doc)} />
 
 
                         </div>
@@ -60,4 +61,4 @@ const updateStatus = (doc) =>{
 
 }
 
-export default Kitchen;
+export default Delivery;

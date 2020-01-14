@@ -1,7 +1,9 @@
 .waiter{
     display:flex;
+    flex-wrap: wrap;
     flex-direction: column;
     background-color: #371124;
+    height: 100%;
 }
 
 .App {
@@ -9,54 +11,59 @@
     padding:2%;
     display:flex;
     flex-direction: row;
-    text-align: center;
-    height: 84vh;
+    height: 100%
 }
 
 .menu{
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 55%;
     text-align: center;
     justify-content: flex-start;
 }
 .categoria{
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap ;
+    flex-direction: row;
+    justify-content: center;
+  
 }
 
 .section{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    justify-items: center;
-    width: 40%;
-    text-align: center;
-    border-style: solid;
-    border-radius: 1%;
-    border-color:#eab46c;
-    
+    align-content: center;
+    width: 45%;
+    border-style: groove;
+    border-color: #eab46c;
+    border-radius: 2%;
+    height: fit-content;
+    padding: 40px;
+
+   
 }
 .pedidos{
-    display: flex;
     flex-wrap: wrap;
-    align-content: center;
+    flex-direction: row;
     align-items: left;
     margin-left: 5%;
-    
 }
 
 .send{
+    margin-left: 5%;
     flex-direction: column;
+    align-items: center;
 }
 
 button{
-    height: 30%;
-    width: 20%;
+    height:10em;
+    width: 10em;
     margin:1%;
-    font-size: 100%;
+    font-size: 1em;
     border-radius: 5%;
     background: #eab46c;
-    color:#f14110;
+    color: #f14110;
     cursor: pointer;
     border: none;
     vertical-align: top;
@@ -68,14 +75,14 @@ button:hover{
 
 }
 
-/* .options{
+.options{
     display: flex;
     flex-direction: column;
 }
 .content-text{
     display: flex;
     justify-content: flex-start;
-} */
+}
 
 .radio{
     color: #eab46c;
@@ -85,10 +92,18 @@ button:hover{
     padding: 2%;
     margin-left:5%;
     size:large;
-
 }
 
 .radio-options{
-    margin: 0.5%;
-    font-size: x-large;
+    margin: 1%;
+    font-size: 1em;
+    padding-left: 2px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+    
 }

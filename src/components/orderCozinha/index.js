@@ -1,18 +1,18 @@
 import React from 'react';
-// import './style.css';
+import './style.css';
 
 
 const OrderCozinha = (props) => {
     return (
         <div className={'card'}>
-            <h4>Nome: {props.name}</h4>
-            <p> Mesa: {props.mesa} </p>
-            <div>Itens: 
+            <h3>Nome: {props.name}</h3>
+            <p>Mesa: {props.mesa} </p>
+            <section>Itens: 
                 {props.productSelect.map((item) =>
-                    <p>{item.contador} {item.name}</p> 
+                    <p className={'itens'}>{item.contador} {item.name}</p> 
                  )}
-            </div>
-            <p>Total: {props.total}</p>
+            </section>
+            <h4>Total: {props.total}</h4>
             
         </div>
     )

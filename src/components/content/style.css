@@ -6,13 +6,21 @@
 }
 
 .content-total{
-    font-size:150%;
+    font-size:1.5em;
     font-weight: bold;
     color: #eab46c;
+    align-items: center;
+    margin-left: 6%;
+    margin-bottom: 3%;
 }
 .title{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
     margin: 5%;
-    font-size: xx-large;
+    font-size: 150%;
     font-weight: bold;
     color:#fa3659;
 }

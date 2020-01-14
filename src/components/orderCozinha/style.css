@@ -1,0 +1,35 @@
+.card{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   width: 20em;
+    justify-content: left;
+    margin:1%;
+    font-size: 0.7em;
+    border-radius: 0.5em;
+    background: #491730;
+    color: #eab46c;
+    border-style: groove;
+    border-color: #371124;
+    padding: 2%;
+}
+
+h3{
+    margin: 1%;
+
+}
+p{
+    margin: 1%;
+}
+
+h4{
+    margin: 1%;
+}
+
+section{
+    margin:1%
+}
+
+.itens{
+    margin-left: 2%;
+}
