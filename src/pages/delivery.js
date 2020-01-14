@@ -29,8 +29,10 @@ const updateStatus = (doc) =>{
 
     firestore.collection('client').doc(doc.id).update({
         status:'Entregue',
+
     })
-}   
+    setClient(client.filter(item => item.id !== doc.id))
+};  
     return (
 
         <>

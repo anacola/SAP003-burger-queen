@@ -91,6 +91,7 @@ const AddClientInfo = () => {
     const addOptions = () => {
         const addOption = {
             ...optionsAndExtra,
+            selectedExtra: selectedOptionsAndExtra.extra ? selectedOptionsAndExtra.extra : "",
             name: `${optionsAndExtra.name}
             ${selectedOptionsAndExtra.option ? selectedOptionsAndExtra.option : ""}
             ${selectedOptionsAndExtra.extra ? selectedOptionsAndExtra.extra : ""}`
@@ -100,8 +101,9 @@ const AddClientInfo = () => {
         setOptionsAndExtra([]);
     };
 
-    const totalOrder = productSelect.reduce((acc, item) => acc + (item.contador * item.price), 0);
-
+    const totalOrder = productSelect.reduce((acc, item) => {
+        const extraPrice = item.selectedExtra ? 1 : 0;
+        return acc + item.contador * (item.price + extraPrice)}, 0);      
 
     const deletar = (item) => {
         const index = (productSelect.indexOf(item));
@@ -187,7 +189,9 @@ const AddClientInfo = () => {
                             <Input id='input-number' type="number" placeholder={'Número da Mesa'} state={table} handleChange={e => setTable(e.currentTarget.value)} />
                         </div>
                         <Content text={'PEDIDOS'} className={'title'} />
-                        {productSelect.map((product, index) => (
+                        {productSelect.map((product, index) => {
+                            const extraPrice = product.selectedExtra ? 1: 0;
+                            return (
                             <div key={index} className={'pedidos'}>
                                 <Button
                                     className={'btn-small'}
@@ -211,7 +215,7 @@ const AddClientInfo = () => {
                                     name={product.name} />
 
                                 <Content className={'content'}
-                                    price={product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                                    price={(product.price + extraPrice).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                                 />
                                 <Button
                                     className={'btn-small-del'}
@@ -220,7 +224,7 @@ const AddClientInfo = () => {
                                         deletar(product);
                                     }} />
                             </div>
-                        ))}
+                        )})}
                         <p className='content-total'>Total: {totalOrder.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                         <div className={'send'}>
                             <Button id='button' className={'btn-send'} handleClick={onSubmit} text={'Enviar'} />

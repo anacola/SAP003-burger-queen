@@ -4,7 +4,6 @@
     align-items: center;
     background-color: #371124;
     height: 100%;
-
 }
 
 .img-main{
@@ -19,6 +18,7 @@
 .main-navegation{
     margin:5%
 }
+
 .main-link{
     margin: 15px;
     width: 500px;
@@ -30,5 +30,4 @@
     display: block;
     text-align: center;
     text-decoration-line:none;
-
 }
