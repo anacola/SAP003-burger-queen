@@ -1,8 +1,7 @@
 import React from 'react';
 import './style.css';
 
-const Order = (props) => {
-    return (
+const Order = (props) => (
         <ol className={'order'}>
             {props.menuItens.map((menu) =>
             <button key={menu.id} onClick={() => props.handleClick(menu)}>
@@ -13,7 +12,6 @@ const Order = (props) => {
             </button>  
             )}
         </ol>
-    )
-}
+)
 
 export default Order

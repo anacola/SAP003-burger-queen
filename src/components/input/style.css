@@ -12,3 +12,10 @@
 ::placeholder{
     font-size: medium;
 }
+
+@media only screen and (max-width: 635px) {
+    .input{
+        height: 25px;
+        width: 220px;
+    }
+}

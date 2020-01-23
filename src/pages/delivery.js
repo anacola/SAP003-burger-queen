@@ -1,8 +1,8 @@
-import firestore from '../components/utils/config.js';
+import firestore from '../utils/config.js';
 import React, {useState, useEffect} from 'react';
 import Button from '../components/button/index.js';
 import OrderCozinha from '../components/orderCozinha/index.js';
-import Header from '../components/Header/index.js'
+import Header from '../components/header/index.js'
 import './delivery.css';
 
 

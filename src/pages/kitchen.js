@@ -1,9 +1,9 @@
-import firestore from '../components/utils/config.js';
+import firestore from '../utils/config.js';
 import React, {useState, useEffect} from 'react';
 import Button from '../components/button/index.js';
 import OrderCozinha from '../components/orderCozinha/index.js';
-import Header from '../components/Header/index.js'
-;import './kitchen.css';
+import Header from '../components/header/index.js';
+import './kitchen.css';
 
 
 const Kitchen = () => {
@@ -48,13 +48,13 @@ const updateStatus = (doc) =>{
                                 mesa={doc.table}
                                 total={doc.total}
                                 productSelect={doc.productSelect}
+                                
                             />
+                            
                             <Button className={'btn-cozinha'} text={'Pedido Pronto'} handleClick={() => updateStatus(doc)} />
-
-
+                            
                         </div>
                         : null
-
                 )}
             </div>
         </>

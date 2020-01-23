@@ -3,11 +3,11 @@ import './style.css';
 import Logo from './logo1.png';
 import { Link } from "react-router-dom"
 
-const Header = (props) =>{
+const Header = (props) => {
     return (
         <header className={'header'}>
             <div>
-                <img src={Logo} alt={props.alt} className={'img'}/>
+                <Link to="/"><img src={Logo} alt={props.alt} className={'img'}/></Link>
             </div>
             <nav className={'navegation'}>
                      <Link to="/service" className='link'>Restaurante</Link>
@@ -15,8 +15,7 @@ const Header = (props) =>{
                      <Link to="/delivery" className='link'>Delivery</Link>  
             </nav>
         </header>
-    );
-} 
-
+    )    
+};
 
 export default Header;

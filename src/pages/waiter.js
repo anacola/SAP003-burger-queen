@@ -1,8 +1,8 @@
-import firestore from '../components/utils/config.js';
+import firestore from '../utils/config.js';
 import React, { useState, useEffect } from 'react';
 import Button from '../components/button/index.js';
 import Input from '../components/input/index.js';
-import Header from '../components/Header/index.js'
+import Header from '../components/header/index.js'
 import Content from '../components/content/index.js';
 import Order from '../components/order/index.js';
 import './waiter.css';
@@ -22,17 +22,17 @@ const AddClientInfo = () => {
     useEffect(() => {
         firestore.collection('menu')
             .get().then((snapshot) => {
-                const products = snapshot.docs.filter(doc => doc.data().breakfast).map((doc) => ({
+                const breakfast = snapshot.docs.filter(doc => doc.data().breakfast).map((doc) => ({
                     id: doc.id,
                     ...doc.data()
                 }))
-                setItens1(products)
+                setItens1(breakfast)
 
-                const products2 = snapshot.docs.filter(doc => doc.data().lunch).map((doc) => ({
+                const lunch = snapshot.docs.filter(doc => doc.data().lunch).map((doc) => ({
                     id: doc.id,
                     ...doc.data()
                 }))
-                setItens2(products2)
+                setItens2(lunch)
             })
 
     }, [])
@@ -105,7 +105,7 @@ const AddClientInfo = () => {
         const extraPrice = item.selectedExtra ? 1 : 0;
         return acc + item.contador * (item.price + extraPrice)}, 0);      
 
-    const deletar = (item) => {
+    const deletProduct = (item) => {
         const index = (productSelect.indexOf(item));
         productSelect.splice(index, 1);
         setProductSelect([...productSelect]);
@@ -221,7 +221,7 @@ const AddClientInfo = () => {
                                     className={'btn-small-del'}
                                     text={'Del'} handleClick={(e) => {
                                         e.preventDefault();
-                                        deletar(product);
+                                        deletProduct(product);
                                     }} />
                             </div>
                         )})}
