@@ -27,3 +27,8 @@
     text-align: center;
     text-decoration-line:none;
 }
+@media only screen and (max-width: 635px) {
+    .main-link{
+        width: 150px;
+    }
+}

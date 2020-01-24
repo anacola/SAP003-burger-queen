@@ -141,13 +141,13 @@ Para este projeto foi criado um logotipo e uma paleta de cores.
 
 Interface criada para visualização em tablet.
 
-![Main](img/main.png)
+![Main](img/Main.jpg)
 
-![Restaurante](img/restaurante.png)
+![Restaurante](img/Restaurante.jpg)
 
-![Cozinha](img/cozinha.png)
+![Cozinha](img/Cozinha.jpg)
 
-![Delivery](img/delivery.png)
+![Delivery](img/Delivery.jpg)
 
 
 ## 7. Rodar Aplicação

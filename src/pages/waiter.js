@@ -5,6 +5,7 @@ import Input from '../components/input/index.js';
 import Header from '../components/header/index.js'
 import Content from '../components/content/index.js';
 import Order from '../components/order/index.js';
+import Others from '../components/others/index.js';
 import './waiter.css';
 
 
@@ -143,38 +144,17 @@ const AddClientInfo = () => {
                                 {optionsAndExtra.length !== 0 ? (
                                     <div className={'radio'}>
                                         <Content text={'Selecione seu tipo de hambúrguer e acompanhamento'} className={'content-total'} />
-                                        {optionsAndExtra.options.map((elem, index) => (
-                                            <div key={index} className={'radio-options'}>
-                                                <input
-                                                    type="radio"
-                                                    name="types"
-                                                    value={optionsAndExtra.name}
-                                                    onClick={() => {
-                                                        setSelectedOpenOptionsAndExtra({
-                                                            ...selectedOptionsAndExtra,
-                                                            option: elem
-                                                        });
-                                                    }}
-                                                />
-                                                {elem}
-                                            </div>
-                                        ))}
-                                        {optionsAndExtra.extra.map((elem, index) => (
-                                            <div key={index} className={'radio-options'}>
-                                                <input
-                                                    type="radio"
-                                                    name="extra"
-                                                    value={optionsAndExtra.name}
-                                                    onClick={() => {
-                                                        setSelectedOpenOptionsAndExtra({
-                                                            ...selectedOptionsAndExtra,
-                                                            extra: elem
-                                                        });
-                                                    }}
-                                                />
-                                                {elem}
-                                            </div>
-                                        ))}
+                                        <Others list={optionsAndExtra.options} name="option" 
+                                            value={optionsAndExtra.name} 
+                                            setOther={setSelectedOpenOptionsAndExtra} 
+                                            selectedOther={selectedOptionsAndExtra}
+                                        />
+                                        <Others list={optionsAndExtra.extra} name="extra" 
+                                            value={optionsAndExtra.name} 
+                                            setOther={setSelectedOpenOptionsAndExtra} 
+                                            selectedOther={selectedOptionsAndExtra}
+                                        />
+                                        
                                         <Button className={'btn-send'} handleClick={addOptions} text={'Adicionar'} />
                                     </div>
                                 ) : (
@@ -235,5 +215,8 @@ const AddClientInfo = () => {
         </>
     );
 };
+
+
+
 
 export default AddClientInfo;

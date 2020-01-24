@@ -10,7 +10,7 @@
     background-color: #491730;
     padding: 2%;
     display: flex;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     height: -webkit-fill-available;
 }
 
@@ -118,6 +118,7 @@ button:hover{
     }
     .App {
         display: block;
+        height: inherit;
     }
     .menu {
         display: flex;
@@ -135,6 +136,12 @@ button:hover{
     }
     .order{
         flex-wrap: wrap;
+    }
+    .title{
+        font-size:100%;
+    }
+    .content-total{
+        font-size: 1em;
     }
 }   
  
